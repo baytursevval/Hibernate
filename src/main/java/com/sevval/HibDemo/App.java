@@ -19,10 +19,11 @@ public class App
     {
 
     	Alien sevval=new Alien();
-    	sevval.setAid(101);
+    	/*   	
+    	sevval.setAid(102);
     	sevval.setAname("sevval");
-    	sevval.setColor("pink");
-    	
+    	sevval.setColor("green");
+    	*/ 	
     	Configuration con=new Configuration().configure().addAnnotatedClass(Alien.class);
     	
     	ServiceRegistry reg=new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
@@ -32,8 +33,12 @@ public class App
     	
     	Transaction tx=session.beginTransaction();
     	
-    	session.save(sevval);
+    	//session.save(sevval);
+    	
+    	sevval= (Alien) session.get(Alien.class, 102);
     	
     	tx.commit();
+    	
+        System.out.println(sevval);
     }
 }
