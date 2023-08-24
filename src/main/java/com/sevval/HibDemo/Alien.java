@@ -1,14 +1,19 @@
 package com.sevval.HibDemo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
+@Table(name="alien_table2")
 public class Alien {
 
 	@Id 
 	private int aid;
 	private String aname;
+	@Column(name="alien_color")
 	private String color;
 	public int getAid() {
 		return aid;
