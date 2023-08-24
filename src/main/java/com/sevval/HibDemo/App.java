@@ -18,12 +18,17 @@ public class App
     public static void main( String[] args )
     {
 
+    	AlienName an=new AlienName();
+    	an.setFname("sevval");
+    	an.setLname("akdnz");
+    	an.setMname("fatmanur");
+    	
     	Alien sevval=new Alien();
-    	/*   	
+    	  	
     	sevval.setAid(102);
-    	sevval.setAname("sevval");
+    	sevval.setAname(an);
     	sevval.setColor("green");
-    	*/ 	
+    		
     	Configuration con=new Configuration().configure().addAnnotatedClass(Alien.class);
     	
     	ServiceRegistry reg=new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
@@ -33,9 +38,9 @@ public class App
     	
     	Transaction tx=session.beginTransaction();
     	
-    	//session.save(sevval);
+    	session.save(sevval);
     	
-    	sevval= (Alien) session.get(Alien.class, 102);
+    	//sevval= (Alien) session.get(Alien.class, 102);
     	
     	tx.commit();
     	
