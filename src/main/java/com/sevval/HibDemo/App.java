@@ -2,6 +2,7 @@ package com.sevval.HibDemo;
 
 import javax.net.ssl.ExtendedSSLSession;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -54,8 +55,9 @@ public class App
     	
     	Session session1=sf.openSession();
     	session1.beginTransaction();
-    	
-    	a=(Alien) session1.get(Alien.class, 101);
+    	Query q1=session1.createQuery("from Alien where aid=101");
+    	q1.setCacheable(true);
+    	a=(Alien)q1.uniqueResult();
     	System.out.println(a);
     	
     	session1.getTransaction().commit();
@@ -63,8 +65,10 @@ public class App
     	
     	Session session2=sf.openSession();
     	session2.beginTransaction();
+    	Query q2=session2.createQuery("from Alien where aid=101");
+    	q2.setCacheable(true);
+    	a=(Alien)q2.uniqueResult();
     	
-    	a=(Alien) session2.get(Alien.class, 101);
     	System.out.println(a);
     	
     	session2.getTransaction().commit();
