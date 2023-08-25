@@ -51,6 +51,7 @@ public class App
     	Configuration con=new Configuration().configure().addAnnotatedClass(Alien.class);
     	ServiceRegistry reg=new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
     	SessionFactory sf= con.buildSessionFactory(reg);
+    	
     	Session session1=sf.openSession();
     	session1.beginTransaction();
     	

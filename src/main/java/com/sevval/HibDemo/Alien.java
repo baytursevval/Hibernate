@@ -1,13 +1,19 @@
 package com.sevval.HibDemo;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name="alien_table")
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 public class Alien {
 
 	@Id 
